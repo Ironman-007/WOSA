@@ -1,0 +1,6 @@
+{
+    "board": "sandeepmistry:nRF5:nRF52DK",
+    "configuration": "softdevice=s132",
+    "sketch": "pca10040_tst.ino",
+    "port": "/dev/ttyACM0"
+}

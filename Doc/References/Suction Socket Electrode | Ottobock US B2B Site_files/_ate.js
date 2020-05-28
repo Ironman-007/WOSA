@@ -1,0 +1,1 @@
+_ate.track.config_resp({"approved":["professionals.ottobockus.com"],"subscription":{"active":true,"edition":"PRO","tier":"pro","reducedBranding":false,"insightsEnabled":false},"customMessageTemplates":[]});
