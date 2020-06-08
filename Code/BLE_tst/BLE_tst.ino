@@ -91,7 +91,7 @@ int radio_recv(){
 
 void setup() {
   radio_setup();
-  
+
   NRF_RADIO->TXADDRESS   = 0x00UL;  // Set address to send to device 0
   radio_buffer[0] = 1; 
   radio_buffer[1] = 2;

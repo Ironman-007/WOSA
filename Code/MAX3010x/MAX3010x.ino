@@ -23,9 +23,10 @@ void setup()
 
 void loop()
 {
-  debug.print(particleSensor.getRed());
-  debug.print(",");
-  debug.println(particleSensor.getIR());
+  debug.println(particleSensor.getRed());
+//  debug.print(",");
+  particleSensor.getIR();
+//  debug.println(particleSensor.getIR());
 //  Serial.print(",");
 //  debug.println(particleSensor.getGreen());
 
