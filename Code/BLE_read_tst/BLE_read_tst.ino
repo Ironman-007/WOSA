@@ -14,7 +14,7 @@ BLEDescriptor tempDescriptor = BLEDescriptor("2901", "Temp Celsius");
 
 volatile bool readFromSensor = false;
 
-char lastTempReading = 'A';
+long lastTempReading = 0;
 
 void setup() {
   Serial.begin(115200);
@@ -43,8 +43,9 @@ void loop() {
 
   tempCharacteristic.setValue(lastTempReading);
 //  lastTempReading = lastTempReading + 1;
+  lastTempReading = random(5);
   Serial.println(lastTempReading);
-//  delay(50);
+  delay(10);
 }
 
 void blePeripheralConnectHandler(BLECentral& central) {
