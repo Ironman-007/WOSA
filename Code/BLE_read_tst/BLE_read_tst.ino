@@ -9,7 +9,7 @@
 BLEPeripheral blePeripheral = BLEPeripheral(BLE_REQ, BLE_RDY, BLE_RST);
 
 BLEService tempService = BLEService("DDD0");
-BLEFloatCharacteristic tempCharacteristic = BLEFloatCharacteristic("DDD1", BLERead);
+BLEFloatCharacteristic tempCharacteristic = BLEFloatCharacteristic("DDD1", BLEWrite | BLENotify);
 BLEDescriptor tempDescriptor = BLEDescriptor("2901", "Temp Celsius");
 
 volatile bool readFromSensor = false;
@@ -44,7 +44,7 @@ void loop() {
   tempCharacteristic.setValue(lastTempReading);
 //  lastTempReading = lastTempReading + 1;
   Serial.println(lastTempReading);
-  delay(1000);
+//  delay(50);
 }
 
 void blePeripheralConnectHandler(BLECentral& central) {
