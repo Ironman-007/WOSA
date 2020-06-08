@@ -9,12 +9,12 @@
 BLEPeripheral blePeripheral = BLEPeripheral(BLE_REQ, BLE_RDY, BLE_RST);
 
 BLEService tempService = BLEService("DDD0");
-BLEFloatCharacteristic tempCharacteristic = BLEFloatCharacteristic("DDD1", BLERead | BLENotify);
+BLEFloatCharacteristic tempCharacteristic = BLEFloatCharacteristic("DDD1", BLERead);
 BLEDescriptor tempDescriptor = BLEDescriptor("2901", "Temp Celsius");
 
 volatile bool readFromSensor = false;
 
-char lastTempReading = 'B';
+char lastTempReading = 'A';
 
 void setup() {
   Serial.begin(115200);
@@ -25,6 +25,7 @@ void setup() {
   blePeripheral.setLocalName("Temperature");
 
   blePeripheral.setAdvertisedServiceUuid(tempService.uuid());
+  Serial.println(tempService.uuid());
   blePeripheral.addAttribute(tempService);
   blePeripheral.addAttribute(tempCharacteristic);
   blePeripheral.addAttribute(tempDescriptor);
@@ -44,47 +45,7 @@ void loop() {
 //  lastTempReading = lastTempReading + 1;
   Serial.println(lastTempReading);
   delay(1000);
-
-//  if (readFromSensor) {
-//    setTempCharacteristicValue();
-//    setHumidityCharacteristicValue();
-//    readFromSensor = false;
-//  }
 }
-
-//void timerHandler() {
-//  readFromSensor = true;
-//}
-//
-//void setTempCharacteristicValue() {
-//  float reading = dht.readTemperature();
-////  float reading = random(100);
-//
-//  if (!isnan(reading) && significantChange(lastTempReading, reading, 0.5)) {
-//    tempCharacteristic.setValue(reading);
-//
-//    Serial.print(F("Temperature: ")); Serial.print(reading); Serial.println(F("C"));
-//
-//    lastTempReading = reading;
-//  }
-//}
-
-//void setHumidityCharacteristicValue() {
-//  float reading = dht.readHumidity();
-////  float reading = random(100);
-//
-//  if (!isnan(reading) && significantChange(lastHumidityReading, reading, 1.0)) {
-//    humidityCharacteristic.setValue(reading);
-//
-//    Serial.print(F("Humidity: ")); Serial.print(reading); Serial.println(F("%"));
-//
-//    lastHumidityReading = reading;
-//  }
-//}
-
-//boolean significantChange(float val1, float val2, float threshold) {
-//  return (abs(val1 - val2) >= threshold);
-//}
 
 void blePeripheralConnectHandler(BLECentral& central) {
   Serial.print(F("Connected event, central: "));
