@@ -11,7 +11,10 @@ class MyDelegate(DefaultDelegate):
         # ... initialise here
 
     def handleNotification(self, cHandle, data):
-        print(data)
+        val = binascii.b2a_hex(data)
+        val = binascii.unhexlify(val)
+        val = struct.unpack('f', val)[0]
+        print(str(val) + " deg C")
 # Initialisation  -------
 
 p = Peripheral("D6:30:BD:2C:E4:58", "random")

@@ -9,7 +9,7 @@
 BLEPeripheral blePeripheral = BLEPeripheral(BLE_REQ, BLE_RDY, BLE_RST);
 
 BLEService tempService = BLEService("DDD0");
-BLEFloatCharacteristic tempCharacteristic = BLEFloatCharacteristic("DDD1", BLEWrite | BLENotify);
+BLEFloatCharacteristic tempCharacteristic = BLEFloatCharacteristic("DDD1", BLERead | BLEWrite | BLENotify);
 BLEDescriptor tempDescriptor = BLEDescriptor("2901", "Temp Celsius");
 
 volatile bool readFromSensor = false;

@@ -12,6 +12,7 @@ try:
     if (ch.supportsRead()):
         while 1:
             val = binascii.b2a_hex(ch.read())
+            print(val)
             val = binascii.unhexlify(val)
             val = struct.unpack('f', val)[0]
             print(str(val) + " deg C")
