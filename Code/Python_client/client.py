@@ -15,6 +15,7 @@ class MyDelegate(DefaultDelegate):
         val = binascii.unhexlify(val)
         val = struct.unpack('f', val)[0]
         print(str(val) + " deg C")
+
 # Initialisation  -------
 
 p = Peripheral("D6:30:BD:2C:E4:58", "random")
